@@ -4,6 +4,7 @@
 
 
 #define BUF 32
+#define STEPS 10
 
 #define MAX_PATH "/sys/class/backlight/gmux_backlight/max_brightness"
 #define CUR_PATH "/sys/class/backlight/gmux_backlight/brightness"
@@ -28,7 +29,10 @@ int write_int(int fd, int val) {
 }
 
 int main(int argc, char** argv) {
+
     int max = get_max();
+    int step = max / STEPS;
+
     int fd = open(CUR_PATH, O_RDWR);
     if (fd == -1) {
         perror("open");
@@ -39,7 +43,7 @@ int main(int argc, char** argv) {
 
     printf("%d %d\n", current, max);
 
-    write_int(fd, current / 2);
+    write_int(fd, current - step);
 
     close(fd);
 
