@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
+#include <unistd.h>
+
 
 
 #define BUF 32
@@ -8,6 +10,8 @@
 
 #define MAX_PATH "/sys/class/backlight/gmux_backlight/max_brightness"
 #define CUR_PATH "/sys/class/backlight/gmux_backlight/brightness"
+
+int delta = 1, step = 0, change = 0;
 
 int get_max() {
     int fd = open(MAX_PATH, O_RDONLY);
@@ -28,10 +32,37 @@ int write_int(int fd, int val) {
     return write(fd, buf, strlen(buf));
 }
 
+int opts(int argc, char** argv) {
+    int i;
+    for (i = 0; i < argc; i++) {
+        char opt = argv[i][0];
+        switch (opt) {
+            case 'u':
+                delta = 1;
+                break;
+            case 'd':
+                delta = -1;
+                break;
+            case 's':
+                delta = 1;
+                change = atoi(argv[++i]);
+                break;
+        }
+    }
+    return 0;
+}
+
 int main(int argc, char** argv) {
 
+    int ret = opts(argc, argv);
+
+    if (ret  > 0) {
+        printf("Invalid\n");
+        return ret;
+    }
+
     int max = get_max();
-    int step = max / STEPS;
+    step = max / STEPS;
 
     int fd = open(CUR_PATH, O_RDWR);
     if (fd == -1) {
@@ -41,9 +72,10 @@ int main(int argc, char** argv) {
 
     int current = read_int(fd);
 
-    printf("%d %d\n", current, max);
+    printf("delta = %d, step = %d change = %d\n", delta, step, change);
 
-    write_int(fd, current - step);
+    int final = change > 0 ? change : current + delta * step;
+    write_int(fd, final);
 
     close(fd);
 
