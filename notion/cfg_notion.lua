@@ -29,6 +29,11 @@ defbindings("WScreen", {
     kpress("AnyModifier+XF86AudioRaiseVolume", "ioncore.exec_on(_, 'amixer sset Master 3%+')"),
     bdoc("Decrease Volume."),
     kpress("AnyModifier+XF86AudioLowerVolume", "ioncore.exec_on(_, 'amixer sset Master 3%-')"),
+
+    bdoc("Increase Screen Brightness."),
+    kpress("AnyModifier+XF86MonBrightnessUp", "ioncore.exec_on(_, '/home/zack/bin/dback u')"),
+    bdoc("Decrease Screen Brightness."),
+    kpress("AnyModifier+XF86MonBrightnessDown", "ioncore.exec_on(_, '/home/zack/bin/dback d')"),
 })
 
 
