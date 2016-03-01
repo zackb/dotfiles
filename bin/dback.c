@@ -75,6 +75,10 @@ int main(int argc, char** argv) {
     printf("delta = %d, step = %d change = %d\n", delta, step, change);
 
     int final = change > 0 ? change : current + delta * step;
+
+    if (final < 0) final = 0;
+    if (final > max) final = max;
+
     write_int(fd, final);
 
     close(fd);
