@@ -96,9 +96,9 @@ local defaults = {
   --
   -- status_display = {full = " ", charging = "+", discharging = "-"}
   status_display = {
-    full        = "full",
-    charging    = "charging",
-    discharging = "discharging",
+    full        = " ",
+    charging    = "+",
+    discharging = "-",
   },
 
   -- Format string used to display data. Number and order of
