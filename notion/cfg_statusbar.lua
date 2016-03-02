@@ -5,7 +5,7 @@ mod_statusbar.create{
     systray = true, -- Swallow systray windows
 
     -- The template
-    template = "[ %date || load:% %>load ]" -- || mail:% %>mail_new/%>mail_total ]"
+    template = "[ %date || load:% %>load || %battery% ]"
                .. " %filler%systray",
 }
 
