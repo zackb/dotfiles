@@ -13,8 +13,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.username = 'vagrant'
 
   config.vm.provider "virtualbox" do |v|
-    v.gui  = true
     v.name = 'zackb'
+    v.gui  = true
+    v.memory = 2048
   end
 
   config.vm.provision :puppet do |puppet|
