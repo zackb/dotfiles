@@ -12,7 +12,7 @@ Package { ensure => 'installed' }
 
 $packages = [
         'vim',
-        'xubuntu-core',
+        'xubuntu-desktop',
         'build-essential',
         'firefox',
     ]
