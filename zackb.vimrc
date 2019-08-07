@@ -7,6 +7,7 @@ set foldmethod=marker
 set ai
 set incsearch
 set wildmenu
+set ruler
 highlight Normal guibg=white
 
 "color icansee
