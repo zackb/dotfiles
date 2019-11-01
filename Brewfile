@@ -25,7 +25,7 @@ brew "docker"
 brew "docker-compose"
 brew "awscli"
 cask "visual-studio-code"
-cask "google-cloud-sdk
+cask "google-cloud-sdk"
 brew "git-lfs"
 brew "httpie"
 brew "readline"
