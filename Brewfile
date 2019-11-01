@@ -40,7 +40,7 @@ brew "kubectx"
 brew "kubernetes-cli"
 brew "kubernetes-helm"
 brew "kubeseal"
-cask "minikube"
+brew "minikube"
 cask "virtualbox"
 
 
