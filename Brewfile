@@ -41,6 +41,7 @@ brew "kubernetes-cli"
 brew "kubernetes-helm"
 brew "kubeseal"
 brew "minikube"
+brew "derailed/k9s/k9s"
 cask "virtualbox"
 
 
