@@ -12,6 +12,8 @@ brew "telnet"
 brew "htop"
 brew "pstree"
 brew "irssi"
+cask "osxfuse"
+brew "s3fs"
 
 # dev
 brew "make"
