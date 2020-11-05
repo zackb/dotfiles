@@ -28,6 +28,7 @@ SOFTWARE.
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 
 
@@ -39,17 +40,17 @@ SOFTWARE.
 
 int delta = 1, step = 0, change = 0;
 
+int read_int(int fd) {
+    char buf[BUF];
+    int r = read(fd, buf, BUF);
+    return atoi(buf);
+}
+
 int get_max() {
     int fd = open(MAX_PATH, O_RDONLY);
     int max = read_int(fd);
     close(fd);
     return max;
-}
-
-int read_int(int fd) {
-    char buf[BUF];
-    int r = read(fd, buf, BUF);
-    return atoi(buf);
 }
 
 int write_int(int fd, int val) {
